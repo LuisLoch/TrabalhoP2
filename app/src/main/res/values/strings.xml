@@ -1,3 +1,18 @@
 <resources>
     <string name="app_name">TrabalhoP2</string>
+    <string name="clientes">CLIENTES</string>
+    <string name="encomendas">Encomendas</string>
+    <string name="flores">FLORES</string>
+    <string name="nome_da_flor">Nome da flor:</string>
+    <string name="tipo">Tipo:</string>
+    <string name="preco">Preço:</string>
+    <string name="salvar">SALVAR</string>
+    <string name="cancelar">CANCELAR</string>
+    <string name="pago">Pago?</string>
+    <string name="cliente">Cliente:</string>
+    <string name="nao">Não</string>
+    <string name="sim">Sim</string>
+    <string name="endereco">Endereço:</string>
+    <string name="cpf">CPF:</string>
+    <string name="nome">Nome:</string>
 </resources>
