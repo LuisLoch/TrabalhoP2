@@ -6,11 +6,11 @@ import android.os.Bundle;
 
 import com.example.trabalhop2.R;
 
-public class pessoasFragment extends AppCompatActivity {
+public class EncomendasFragment extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_pessoas_fragment);
+        setContentView(R.layout.activity_encomendas_fragment);
     }
 }
