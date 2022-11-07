@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "302545976624",
+    "firebase_url": "https://atividadefirebase20221104-default-rtdb.firebaseio.com",
+    "project_id": "atividadefirebase20221104",
+    "storage_bucket": "atividadefirebase20221104.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:302545976624:android:5610739bb10f7582bb1cf5",
+        "android_client_info": {
+          "package_name": "com.example.trabalhop2"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "302545976624-hfuk3cs1jjdhb4embr7at1pcrpemo3b8.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.trabalhop2",
+            "certificate_hash": "4a04e78629ccad917d6a5fce9bce0c999c003f19"
+          }
+        },
+        {
+          "client_id": "302545976624-bc3n31vr8dv7ugjn840j8j486bloscfn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAI4qhmdTchfQSkYtNzLNjjlSeGfuuM488"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "302545976624-bc3n31vr8dv7ugjn840j8j486bloscfn.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
