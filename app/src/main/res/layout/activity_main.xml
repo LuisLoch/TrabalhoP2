@@ -25,15 +25,15 @@
             android:orientation="horizontal">
 
             <Button
-                android:id="@+id/idBtnFlores"
+                android:id="@+id/idBtnFlores_main"
+                style="?android:attr/buttonBarButtonStyle"
                 android:layout_width="wrap_content"
-                android:layout_height="61dp"
+                android:layout_height="62dp"
                 android:layout_weight="1"
-                android:text="@string/flores"
-                style="?android:attr/buttonBarButtonStyle" />
+                android:text="@string/flores" />
 
             <Button
-                android:id="@+id/idBtnClientes"
+                android:id="@+id/idBtnClientes_main"
                 android:layout_width="wrap_content"
                 android:layout_height="62dp"
                 android:layout_weight="1"
@@ -41,20 +41,38 @@
                 style="?android:attr/buttonBarButtonStyle" />
 
             <Button
-                android:id="@+id/idBtnEncomendas"
+                android:id="@+id/idBtnEncomendas_main"
+                style="?android:attr/buttonBarButtonStyle"
                 android:layout_width="wrap_content"
-                android:layout_height="63dp"
+                android:layout_height="62dp"
                 android:layout_weight="1"
-                android:text="@string/encomendas"
-                style="?android:attr/buttonBarButtonStyle" />
+                android:text="@string/encomendas" />
         </LinearLayout>
 
-        <FrameLayout
-            android:id="@+id/idFrame_main"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
 
-        </FrameLayout>
+            <FrameLayout
+                android:layout_width="12dp"
+                android:layout_height="match_parent">
+
+            </FrameLayout>
+
+            <FrameLayout
+                android:id="@+id/idFrame_main"
+                android:layout_width="383dp"
+                android:layout_height="match_parent">
+
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="12dp"
+                android:layout_height="match_parent">
+
+            </FrameLayout>
+        </LinearLayout>
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
