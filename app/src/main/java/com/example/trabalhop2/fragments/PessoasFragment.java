@@ -3,42 +3,33 @@ package com.example.trabalhop2.fragments;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.trabalhop2.R;
+import com.google.firebase.database.DatabaseReference;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link PessoasFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class PessoasFragment extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
+    EditText etNomePessoa, etEnderecoPessoa, etCpfPessoa;
+    Button btnSalvar, btnCancelar;
+    RecyclerView recyclerView;
+    DatabaseReference databaseReference;
+
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
-    // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
 
-    public PessoasFragment() {
-        // Required empty public constructor
-    }
+    public PessoasFragment() { }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment PessoasFragment.
-     */
-    // TODO: Rename and change types and number of parameters
     public static PessoasFragment newInstance(String param1, String param2) {
         PessoasFragment fragment = new PessoasFragment();
         Bundle args = new Bundle();
@@ -58,9 +49,47 @@ public class PessoasFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_pessoas, container, false);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_pessoas, container, false);
+
+        btnSalvar = view.findViewById(R.id.idSalvar_pessoasFragment);
+        btnCancelar = view.findViewById(R.id.idCancelar_pessoasFragment);
+
+        etNomePessoa = view.findViewById(R.id.idNome_pessoasFragment);
+        etEnderecoPessoa = view.findViewById(R.id.idEndereco_pessoasFragment);
+        etCpfPessoa = view.findViewById(R.id.idCpf_pessoasFragment);
+
+        btnSalvar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                salvarPessoa();
+                cancelarPessoa();
+            }
+        });
+
+        btnCancelar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                cancelarPessoa();
+                Toast.makeText(getContext(), "Campos limpos.", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        return view;
+    }
+
+    private void cancelarPessoa() {
+        etNomePessoa.setText("");
+        etEnderecoPessoa.setText("");
+        etCpfPessoa.setText("");
+    }
+
+    private void salvarPessoa(){
+        try {
+
+            Toast.makeText(getContext(), "Cliente salvo.", Toast.LENGTH_SHORT).show();
+        }catch (Exception e){
+            Toast.makeText(getContext(), "Não foi possível salvar, preencha corretamente os campos e tente novamente.", Toast.LENGTH_SHORT).show();
+        }
     }
 }

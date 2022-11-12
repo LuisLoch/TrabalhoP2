@@ -50,6 +50,7 @@
             android:id="@+id/idCancelar_floresFragment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:onClick="cancelar"
             android:text="@string/cancelar" />
 
         <androidx.recyclerview.widget.RecyclerView

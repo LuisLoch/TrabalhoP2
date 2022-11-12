@@ -30,21 +30,44 @@
             android:minHeight="48dp"
             android:autofillHints="" />
 
+        <EditText
+            android:id="@+id/idFlor_encomendasFragment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="@string/flor"
+            android:inputType="textPersonName"
+            android:minHeight="48dp"
+            android:autofillHints="" />
+
+        <EditText
+            android:id="@+id/idTipoFlor_encomendasFragment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="@string/tipo_da_flor"
+            android:inputType="textPersonName"
+            android:minHeight="48dp"
+            android:autofillHints="" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:orientation="horizontal">
 
-            <EditText
+            <TextView
                 android:id="@+id/idPago_encomendasFragment"
-                android:layout_width="wrap_content"
+                android:layout_width="122dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:autofillHints=""
                 android:ems="10"
+                android:gravity="center"
                 android:hint="@string/pago"
                 android:inputType="textPersonName"
                 android:minHeight="48dp"
-                android:autofillHints="" />
+                android:textAlignment="center"
+                android:textSize="20sp" />
 
             <Button
                 android:id="@+id/idSim_encomendasFragment"

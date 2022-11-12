@@ -13,32 +13,31 @@ import com.example.trabalhop2.fragments.FloresFragment;
 import com.example.trabalhop2.fragments.PessoasFragment;
 
 public class MainActivity extends AppCompatActivity {
-    Button btnFlores, btnClientes, btnEncomendas;
+    Button btnFlores_main, btnClientes_main, btnEncomendas_main;
     FrameLayout frameLayout;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        btnFlores = findViewById(R.id.idBtnFlores_main);
-        btnClientes = findViewById(R.id.idBtnClientes_main);
-        btnEncomendas = findViewById(R.id.idBtnEncomendas_main);
+        btnFlores_main = findViewById(R.id.idBtnFlores_main);
+        btnClientes_main = findViewById(R.id.idBtnClientes_main);
+        btnEncomendas_main = findViewById(R.id.idBtnEncomendas_main);
         frameLayout = findViewById(R.id.idFrame_main);
 
-        btnFlores.setOnClickListener(new View.OnClickListener() {
+        btnFlores_main.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 setFragmentFlores(view);
             }
         });
-        btnClientes.setOnClickListener(new View.OnClickListener() {
+        btnClientes_main.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 setFragmentClientes(view);
             }
         });
-        btnEncomendas.setOnClickListener(new View.OnClickListener() {
+        btnEncomendas_main.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 setFragmentEncomendas(view);
