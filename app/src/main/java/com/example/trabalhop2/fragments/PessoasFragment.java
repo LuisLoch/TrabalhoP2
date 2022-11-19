@@ -2,7 +2,9 @@ package com.example.trabalhop2.fragments;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
@@ -13,14 +15,27 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.trabalhop2.R;
+import com.example.trabalhop2.adapterRecycle.PessoaAdapter;
+import com.example.trabalhop2.models.Pessoa;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.LinkedList;
+import java.util.List;
 
 public class PessoasFragment extends Fragment {
 
     EditText etNomePessoa, etEnderecoPessoa, etCpfPessoa;
     Button btnSalvar, btnCancelar;
+    List<Pessoa> dados;
     RecyclerView recyclerView;
-    DatabaseReference databaseReference;
+    LinearLayoutManager linearLayoutManager;
+    PessoaAdapter pessoaAdapter;
+    DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
 
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
@@ -59,11 +74,22 @@ public class PessoasFragment extends Fragment {
         etEnderecoPessoa = view.findViewById(R.id.idEndereco_pessoasFragment);
         etCpfPessoa = view.findViewById(R.id.idCpf_pessoasFragment);
 
+        recyclerView = view.findViewById(R.id.idRecyclerView_pessoasFragment);
+        linearLayoutManager = new LinearLayoutManager(getContext());
+        recyclerView.setLayoutManager(linearLayoutManager);
+        recyclerView.setHasFixedSize(true);
+        dados = new LinkedList();
+        pessoaAdapter = new PessoaAdapter(dados);
+        recyclerView.setAdapter(pessoaAdapter);
+
+        cancelarPessoa();
+
+        listarDados();
+
         btnSalvar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 salvarPessoa();
-                cancelarPessoa();
             }
         });
 
@@ -86,10 +112,46 @@ public class PessoasFragment extends Fragment {
 
     private void salvarPessoa(){
         try {
-
-            Toast.makeText(getContext(), "Cliente salvo.", Toast.LENGTH_SHORT).show();
+            Pessoa pessoa = new Pessoa();
+            pessoa.setNome(etNomePessoa.getText().toString());
+            pessoa.setCpf(etCpfPessoa.getText().toString());
+            pessoa.setEndereco(etEnderecoPessoa.getText().toString());
+            if(pessoa.getNome().isEmpty() || pessoa.getCpf().isEmpty() || pessoa.getEndereco().isEmpty()){
+                Toast.makeText(getContext(), "Preencha todos os campos e tente de novo.", Toast.LENGTH_SHORT).show();
+            }else {
+                Toast.makeText(getContext(), "Cliente salvo.", Toast.LENGTH_SHORT).show();
+                databaseReference.child("pessoas").push().setValue(pessoa);
+                cancelarPessoa();
+            }
         }catch (Exception e){
-            Toast.makeText(getContext(), "Não foi possível salvar, preencha corretamente os campos e tente novamente.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getContext(), "Algo deu errado.", Toast.LENGTH_SHORT).show();
         }
+    }
+
+    private void listarDados(){
+        DatabaseReference pessoas = databaseReference.child("pessoas");
+        Query query = pessoas.orderByChild("nome");
+
+        query.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                try{
+                    dados.clear();
+                    for (DataSnapshot item : snapshot.getChildren()) {
+                        Pessoa pessoa = item.getValue(Pessoa.class);
+                        dados.add(pessoa);
+                    }
+                    pessoaAdapter.notifyDataSetChanged();
+                }catch (Exception e){
+                    Toast.makeText(getContext(), "Erro: " + e, Toast.LENGTH_SHORT).show();
+                }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(getContext(), "Erro: " + error, Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }

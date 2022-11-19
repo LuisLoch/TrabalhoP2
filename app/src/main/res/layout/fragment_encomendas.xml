@@ -57,7 +57,7 @@
 
             <TextView
                 android:id="@+id/idPago_encomendasFragment"
-                android:layout_width="122dp"
+                android:layout_width="221dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:autofillHints=""
@@ -67,6 +67,7 @@
                 android:inputType="textPersonName"
                 android:minHeight="48dp"
                 android:textAlignment="center"
+                android:textColorHint="#78909C"
                 android:textSize="20sp" />
 
             <Button

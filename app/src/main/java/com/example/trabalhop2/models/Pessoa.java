@@ -1,29 +1,19 @@
 package com.example.trabalhop2.models;
 
 public class Pessoa {
-    String cpf, endereco, nome;
+    String cpf;
+    String endereco;
+    String nome;
 
-    public String getCpf() {
-        return cpf;
-    }
+    public String getCpf() { return cpf; }
 
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
-    }
+    public void setCpf(String cpf) { this.cpf = cpf; }
 
-    public String getEndereco() {
-        return endereco;
-    }
+    public String getEndereco() { return endereco; }
 
-    public void setEndereco(String endereco) {
-        this.endereco = endereco;
-    }
+    public void setEndereco(String endereco) { this.endereco = endereco; }
 
-    public String getNome() {
-        return nome;
-    }
+    public String getNome() { return nome; }
 
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
+    public void setNome(String nome) { this.nome = nome; }
 }

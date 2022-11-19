@@ -8,7 +8,7 @@
     <string name="preco">Preço:</string>
     <string name="salvar">SALVAR</string>
     <string name="cancelar">CANCELAR</string>
-    <string name="pago">Pago?</string>
+    <string name="pago">Pago antes da entrega?</string>
     <string name="cliente">Cliente:</string>
     <string name="nao">Não</string>
     <string name="sim">Sim</string>
