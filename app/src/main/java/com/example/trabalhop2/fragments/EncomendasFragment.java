@@ -18,6 +18,7 @@ import android.widget.Toast;
 import com.example.trabalhop2.R;
 import com.example.trabalhop2.adapterRecycle.EncomendaAdapter;
 import com.example.trabalhop2.models.Encomenda;
+import com.example.trabalhop2.models.Endereco;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -30,7 +31,7 @@ import java.util.List;
 
 public class EncomendasFragment extends Fragment {
 
-    EditText etCliente, etEndereco, etFlor, etTipoFlor;
+    EditText etCliente, etFlor, etTipoFlor, etLogradouro, etBairro, etComplemento;
     TextView tvPago;
     Button btnSalvar, btnCancelar, btnPagoSim, btnPagoNao;
     List<Encomenda> dados;
@@ -75,7 +76,9 @@ public class EncomendasFragment extends Fragment {
         btnPagoNao = view.findViewById(R.id.idNao_encomendasFragment);
 
         etCliente = view.findViewById(R.id.idCliente_encomendasFragment);
-        etEndereco = view.findViewById(R.id.idEndereco_encomendasFragment);
+        etLogradouro = view.findViewById(R.id.idLogradouroEndereco_encomendasFragment);
+        etBairro = view.findViewById(R.id.idBairroEndereco_encomendasFragment);
+        etComplemento = view.findViewById(R.id.idComplementoEndereco_encomendasFragment);
         etFlor = view.findViewById(R.id.idFlor_encomendasFragment);
         etTipoFlor = view.findViewById(R.id.idTipoFlor_encomendasFragment);
         tvPago = view.findViewById(R.id.idPago_encomendasFragment);
@@ -83,7 +86,6 @@ public class EncomendasFragment extends Fragment {
         recyclerView = view.findViewById(R.id.idRecyclerView_encomendasFragment);
         linearLayoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(linearLayoutManager);
-        recyclerView.setHasFixedSize(true);
         dados = new LinkedList();
         encomendaAdapter = new EncomendaAdapter(dados);
         recyclerView.setAdapter(encomendaAdapter);
@@ -126,7 +128,9 @@ public class EncomendasFragment extends Fragment {
 
     private void cancelarEncomenda() {
         etCliente.setText("");
-        etEndereco.setText("");
+        etLogradouro.setText("");
+        etBairro.setText("");
+        etComplemento.setText("");
         etFlor.setText("");
         etTipoFlor.setText("");
         tvPago.setText("");
@@ -136,15 +140,21 @@ public class EncomendasFragment extends Fragment {
         try {
             Encomenda encomenda = new Encomenda();
             encomenda.setCliente(etCliente.getText().toString());
-            encomenda.setEndereco(etEndereco.getText().toString());
             encomenda.setFlor(etFlor.getText().toString());
             encomenda.setTipoFlor(etTipoFlor.getText().toString());
             encomenda.setPago(tvPago.getText().toString());
-            if(encomenda.getCliente().isEmpty() || encomenda.getEndereco().isEmpty() || encomenda.getFlor().isEmpty() || encomenda.getTipoFlor().isEmpty() || encomenda.getPago().isEmpty()){
+
+            Endereco endereco = new Endereco();
+            endereco.setLogradouro(etLogradouro.getText().toString());
+            endereco.setBairro(etBairro.getText().toString());
+            endereco.setComplemento(etComplemento.getText().toString());
+            encomenda.setEndereco(endereco);
+
+            if(encomenda.getCliente().isEmpty() || encomenda.getEndereco().getLogradouro().isEmpty() || encomenda.getEndereco().getBairro().isEmpty() || encomenda.getFlor().isEmpty() || encomenda.getTipoFlor().isEmpty() || encomenda.getPago().isEmpty())
                 Toast.makeText(getContext(), "Preencha todos os campos e tente de novo.", Toast.LENGTH_SHORT).show();
-            }else {
-                Toast.makeText(getContext(), "Encomenda salva.", Toast.LENGTH_SHORT).show();
+            else {
                 databaseReference.child("encomendas").push().setValue(encomenda);
+                Toast.makeText(getContext(), "Encomenda salva.", Toast.LENGTH_SHORT).show();
                 cancelarEncomenda();
             }
         }catch (Exception e){

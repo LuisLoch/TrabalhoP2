@@ -16,6 +16,7 @@ import android.widget.Toast;
 
 import com.example.trabalhop2.R;
 import com.example.trabalhop2.adapterRecycle.PessoaAdapter;
+import com.example.trabalhop2.models.Endereco;
 import com.example.trabalhop2.models.Pessoa;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -29,7 +30,7 @@ import java.util.List;
 
 public class PessoasFragment extends Fragment {
 
-    EditText etNomePessoa, etEnderecoPessoa, etCpfPessoa;
+    EditText etNomePessoa, etCpfPessoa, etLogradouroEndereco, etBairroEndereco, etComplementoEndereco;
     Button btnSalvar, btnCancelar;
     List<Pessoa> dados;
     RecyclerView recyclerView;
@@ -71,13 +72,14 @@ public class PessoasFragment extends Fragment {
         btnCancelar = view.findViewById(R.id.idCancelar_pessoasFragment);
 
         etNomePessoa = view.findViewById(R.id.idNome_pessoasFragment);
-        etEnderecoPessoa = view.findViewById(R.id.idEndereco_pessoasFragment);
         etCpfPessoa = view.findViewById(R.id.idCpf_pessoasFragment);
+        etLogradouroEndereco = view.findViewById(R.id.idLogradouroEndereco_pessoasFragment);
+        etBairroEndereco = view.findViewById(R.id.idBairroEndereco_pessoasFragment);
+        etComplementoEndereco = view.findViewById(R.id.idComplementoEndereco_pessoasFragment);
 
         recyclerView = view.findViewById(R.id.idRecyclerView_pessoasFragment);
         linearLayoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(linearLayoutManager);
-        recyclerView.setHasFixedSize(true);
         dados = new LinkedList();
         pessoaAdapter = new PessoaAdapter(dados);
         recyclerView.setAdapter(pessoaAdapter);
@@ -106,8 +108,10 @@ public class PessoasFragment extends Fragment {
 
     private void cancelarPessoa() {
         etNomePessoa.setText("");
-        etEnderecoPessoa.setText("");
         etCpfPessoa.setText("");
+        etLogradouroEndereco.setText("");
+        etBairroEndereco.setText("");
+        etComplementoEndereco.setText("");
     }
 
     private void salvarPessoa(){
@@ -115,10 +119,16 @@ public class PessoasFragment extends Fragment {
             Pessoa pessoa = new Pessoa();
             pessoa.setNome(etNomePessoa.getText().toString());
             pessoa.setCpf(etCpfPessoa.getText().toString());
-            pessoa.setEndereco(etEnderecoPessoa.getText().toString());
-            if(pessoa.getNome().isEmpty() || pessoa.getCpf().isEmpty() || pessoa.getEndereco().isEmpty()){
+
+            Endereco endereco = new Endereco();
+            endereco.setLogradouro(etLogradouroEndereco.getText().toString());
+            endereco.setBairro(etBairroEndereco.getText().toString());
+            endereco.setComplemento(etComplementoEndereco.getText().toString());
+            pessoa.setEndereco(endereco);
+
+            if(pessoa.getNome().isEmpty() || pessoa.getCpf().isEmpty() || pessoa.getEndereco().getBairro().isEmpty() || pessoa.getEndereco().getLogradouro().isEmpty() || pessoa.getEndereco().getBairro().isEmpty())
                 Toast.makeText(getContext(), "Preencha todos os campos e tente de novo.", Toast.LENGTH_SHORT).show();
-            }else {
+            else {
                 Toast.makeText(getContext(), "Cliente salvo.", Toast.LENGTH_SHORT).show();
                 databaseReference.child("pessoas").push().setValue(pessoa);
                 cancelarPessoa();

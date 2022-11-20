@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.trabalhop2.R;
 import com.example.trabalhop2.models.Flor;
 
+import java.text.DecimalFormat;
 import java.util.List;
 
 public class FlorAdapter extends RecyclerView.Adapter<FlorAdapter.FlorHolder> {
@@ -32,7 +33,11 @@ public class FlorAdapter extends RecyclerView.Adapter<FlorAdapter.FlorHolder> {
     public void onBindViewHolder(@NonNull FlorHolder florHolder, int position) {
         florHolder.nome.setText("Nome: "+dados.get(position).getNome());
         florHolder.tipo.setText("Tipo: "+dados.get(position).getTipo());
-        florHolder.preco.setText("R$ "+dados.get(position).getPreco().toString());
+        DecimalFormat df = new DecimalFormat("#0.00");
+        float valor;
+        valor = Float.parseFloat(dados.get(position).getPreco().toString());
+        valor = Float.parseFloat(df.format(valor));
+        florHolder.preco.setText("R$ "+valor);
     }
 
     @Override

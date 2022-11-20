@@ -33,19 +33,23 @@ public class PessoaAdapter extends RecyclerView.Adapter<PessoaAdapter.PessoaHold
     public void onBindViewHolder(@NonNull PessoaHolder pessoaHolder, int position) {
         pessoaHolder.nome.setText("Nome: "+dados.get(position).getNome());
         pessoaHolder.cpf.setText("CPF: "+dados.get(position).getCpf());
-        pessoaHolder.endereco.setText("Endereço: "+dados.get(position).getEndereco());
+        pessoaHolder.logradouro.setText("Endereço: "+dados.get(position).getEndereco().getLogradouro());
+        pessoaHolder.bairro.setText("Bairro: "+dados.get(position).getEndereco().getBairro());
+        pessoaHolder.complemento.setText("Complemento: "+dados.get(position).getEndereco().getComplemento());
     }
 
     @Override
     public int getItemCount() { return dados.size(); }
 
     public class PessoaHolder extends RecyclerView.ViewHolder {
-        public TextView nome, cpf, endereco;
+        public TextView nome, cpf, logradouro, bairro, complemento;
         public PessoaHolder(@NonNull View itemView){
             super((itemView));
             nome = itemView.findViewById(R.id.idNome_linhapessoa);
             cpf = itemView.findViewById(R.id.idCpf_linhapessoa);
-            endereco = itemView.findViewById(R.id.idEndereco_linhapessoa);
+            logradouro = itemView.findViewById(R.id.idLogradouro_linhapessoa);
+            bairro = itemView.findViewById(R.id.idBairro_linhapessoa);
+            complemento = itemView.findViewById(R.id.idComplemento_linhapessoa);
         }
     }
 }

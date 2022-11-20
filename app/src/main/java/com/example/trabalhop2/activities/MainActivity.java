@@ -15,6 +15,7 @@ import com.example.trabalhop2.fragments.PessoasFragment;
 public class MainActivity extends AppCompatActivity {
     Button btnFlores_main, btnClientes_main, btnEncomendas_main;
     FrameLayout frameLayout;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,16 +28,16 @@ public class MainActivity extends AppCompatActivity {
 
         btnFlores_main.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                setFragmentFlores(view);
-            }
+            public void onClick(View view) { setFragmentFlores(view); }
         });
+
         btnClientes_main.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 setFragmentClientes(view);
             }
         });
+
         btnEncomendas_main.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

@@ -37,7 +37,6 @@ public class FloresFragment extends Fragment {
     FlorAdapter florAdapter;
     DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
 
-
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
@@ -116,12 +115,15 @@ public class FloresFragment extends Fragment {
             Flor flor = new Flor();
             flor.setNome(etNomeFlor.getText().toString());
             flor.setTipo(etTipoFlor.getText().toString());
-            flor.setPreco(Float.parseFloat(etPrecoFlor.getText().toString().replaceAll(",", ".")));
-            if(flor.getNome().isEmpty() || flor.getTipo().isEmpty() || flor.getPreco().toString().isEmpty()){
+
+            if(!etPrecoFlor.getText().toString().isEmpty())
+                flor.setPreco(Float.parseFloat(etPrecoFlor.getText().toString().replaceAll(",", ".")));
+
+            if (flor.getNome().isEmpty() || flor.getTipo().isEmpty() || etPrecoFlor.getText().toString().isEmpty())
                 Toast.makeText(getContext(), "Preencha todos os campos e tente de novo.", Toast.LENGTH_SHORT).show();
-            }else {
-                Toast.makeText(getContext(), "Flor salva.", Toast.LENGTH_SHORT).show();
+            else {
                 databaseReference.child("flores").push().setValue(flor);
+                Toast.makeText(getContext(), "Flor salva.", Toast.LENGTH_SHORT).show();
                 cancelarFlor();
             }
         }catch (Exception e){
@@ -146,7 +148,6 @@ public class FloresFragment extends Fragment {
                 }catch (Exception e){
                     Toast.makeText(getContext(), "Erro: " + e, Toast.LENGTH_SHORT).show();
                 }
-
             }
 
             @Override

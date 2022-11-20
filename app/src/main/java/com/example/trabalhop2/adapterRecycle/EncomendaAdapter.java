@@ -31,10 +31,10 @@ public class EncomendaAdapter extends RecyclerView.Adapter<EncomendaAdapter.Enco
     @Override
     public void onBindViewHolder(@NonNull EncomendaHolder encomendaHolder, int position) {
             encomendaHolder.cliente.setText("Cliente: "+dados.get(position).getCliente());
-            encomendaHolder.endereco.setText("Local: "+dados.get(position).getEndereco());
+            encomendaHolder.endereco.setText(dados.get(position).getEndereco().getLogradouro() + ", " + dados.get(position).getEndereco().getBairro() + ", " + dados.get(position).getEndereco().getComplemento());
             encomendaHolder.flor.setText("Flor: "+dados.get(position).getFlor());
             encomendaHolder.tipoFlor.setText("Espécie: "+dados.get(position).getTipoFlor());
-            encomendaHolder.pago.setText("Previamente pago: "+dados.get(position).getPago());
+            encomendaHolder.pago.setText("Pago: "+dados.get(position).getPago());
     }
 
     @Override

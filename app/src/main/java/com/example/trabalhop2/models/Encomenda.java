@@ -1,7 +1,8 @@
 package com.example.trabalhop2.models;
 
 public class Encomenda {
-    String cliente, endereco, pago, flor, tipoFlor;
+    String cliente, pago, flor, tipoFlor;
+    Endereco endereco;
 
     public String getCliente() { return cliente; }
 
@@ -9,11 +10,11 @@ public class Encomenda {
         this.cliente = cliente;
     }
 
-    public String getEndereco() {
+    public Endereco getEndereco() {
         return endereco;
     }
 
-    public void setEndereco(String endereco) {
+    public void setEndereco(Endereco endereco) {
         this.endereco = endereco;
     }
 
