@@ -10,26 +10,25 @@
         android:layout_width="226dp"
         android:layout_height="35dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/idEndereco_linhaencomenda" />
 
     <TextView
         android:id="@+id/idPago_linhaencomenda"
         android:layout_width="152dp"
         android:layout_height="35dp"
-        android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/idEndereco_linhaencomenda" />
 
     <TextView
         android:id="@+id/idEndereco_linhaencomenda"
         android:layout_width="379dp"
         android:layout_height="35dp"
         android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/idCliente_linhaencomenda" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/idNomeFlor_linhaencomenda"
@@ -37,7 +36,7 @@
         android:layout_height="35dp"
         android:layout_marginStart="16dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/idEndereco_linhaencomenda" />
+        app:layout_constraintTop_toBottomOf="@+id/idCliente_linhaencomenda" />
 
     <TextView
         android:id="@+id/idTipoFlor_linhaencomenda"
@@ -45,7 +44,7 @@
         android:layout_height="35dp"
         android:layout_marginEnd="16dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/idEndereco_linhaencomenda" />
+        app:layout_constraintTop_toBottomOf="@+id/idCliente_linhaencomenda" />
 
     <View
         android:id="@+id/divider3"

@@ -31,9 +31,9 @@ public class PessoaAdapter extends RecyclerView.Adapter<PessoaAdapter.PessoaHold
 
     @Override
     public void onBindViewHolder(@NonNull PessoaHolder pessoaHolder, int position) {
-        pessoaHolder.nome.setText(dados.get(position).getNome());
-        pessoaHolder.cpf.setText(dados.get(position).getCpf().toString());
-        pessoaHolder.endereco.setText(dados.get(position).getEndereco());
+        pessoaHolder.nome.setText("Nome: "+dados.get(position).getNome());
+        pessoaHolder.cpf.setText("CPF: "+dados.get(position).getCpf());
+        pessoaHolder.endereco.setText("Endereço: "+dados.get(position).getEndereco());
     }
 
     @Override

@@ -30,9 +30,9 @@ public class FlorAdapter extends RecyclerView.Adapter<FlorAdapter.FlorHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull FlorHolder florHolder, int position) {
-        florHolder.nome.setText(dados.get(position).getNome());
-        florHolder.tipo.setText(dados.get(position).getTipo());
-        florHolder.preco.setText(dados.get(position).getPreco().toString());
+        florHolder.nome.setText("Nome: "+dados.get(position).getNome());
+        florHolder.tipo.setText("Tipo: "+dados.get(position).getTipo());
+        florHolder.preco.setText("R$ "+dados.get(position).getPreco().toString());
     }
 
     @Override
